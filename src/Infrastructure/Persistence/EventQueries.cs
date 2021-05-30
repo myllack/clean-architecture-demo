@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence
 {
-    public class EventsQueries : IEventQueries
+    public class EventQueries : IEventQueries
     {
         public async Task<List<EventViewModel>> GetEvents()
         {

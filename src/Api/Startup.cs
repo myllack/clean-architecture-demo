@@ -55,7 +55,8 @@ namespace Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "clean_architecture_demo", Version = "v1" });
             });
 
-            services.AddScoped<IEventQueries, EventsQueries>();
+            services.AddScoped<IEventQueries, EventQueries>();
+            services.AddScoped<IEventCommands, EventCommands>();
         }
     }
 }
