@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Interfaces;
+using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,21 +8,17 @@ namespace Application.Events.Queries.GetEvents
 {
     public class GetEventsQueryHandler : IRequestHandler<GetEventsQuery, List<EventViewModel>>
     {
+        private readonly IEventQueries _eventQueries;
+
+        public GetEventsQueryHandler(IEventQueries eventQueries)
+        {
+            _eventQueries = eventQueries;
+        }
+
         public async Task<List<EventViewModel>> Handle(GetEventsQuery request, CancellationToken cancellationToken)
         {
-            return new List<EventViewModel>
-            {
-                new EventViewModel
-                {
-                    Id = 0,
-                    Name = "test1"
-                },
-                new EventViewModel
-                {
-                    Id = 1,
-                    Name = "test2"
-                },
-            };
+            var events = await _eventQueries.GetEvents();
+            return events;
         }
     }
 }

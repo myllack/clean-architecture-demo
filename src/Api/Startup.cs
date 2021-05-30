@@ -1,3 +1,5 @@
+using Application.Interfaces;
+using Infrastructure.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +54,8 @@ namespace Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "clean_architecture_demo", Version = "v1" });
             });
+
+            services.AddScoped<IEventQueries, EventsQueries>();
         }
     }
 }
