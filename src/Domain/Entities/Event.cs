@@ -8,5 +8,6 @@ namespace Domain.Entities
         public List<DateTime> Dates { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
+        public List<Vote> Votes { get; set; }
     }
 }

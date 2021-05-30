@@ -1,4 +1,5 @@
-﻿using Application.Events.Queries.GetEvents;
+﻿using Application.Events.Queries.GetEventDetails;
+using Application.Events.Queries.GetEvents;
 using Application.Interfaces;
 using AutoMapper;
 using System.Collections.Generic;
@@ -15,6 +16,13 @@ namespace Infrastructure.Persistence
         {
             _eventStore = eventStore;
             _mapper = mapper;
+        }
+
+        public async Task<EventDetailsViewModel> GetEventDetails(int id)
+        {
+            var @event = _eventStore.GetEvent(id);
+
+            return _mapper.Map<EventDetailsViewModel>(@event);
         }
 
         public async Task<List<EventViewModel>> GetEvents()

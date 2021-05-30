@@ -17,6 +17,11 @@ namespace Infrastructure.Persistence
             return newEvent.Id;
         }
 
+        public Event GetEvent(int Id)
+        {
+            return _events.FirstOrDefault(e => e.Id == Id);
+        }
+
         public List<Event> GetEvents()
         {
             return _events;
