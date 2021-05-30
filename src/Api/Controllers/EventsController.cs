@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Events.Queries.GetEvents;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace Clean_architecture_demo.Controllers
+namespace Api.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
@@ -16,7 +17,7 @@ namespace Clean_architecture_demo.Controllers
         }
 
         [HttpGet("list")]
-        public IEnumerable<object> Get()
+        public IEnumerable<EventViewModel> Get()
         {
             return null;
         }

@@ -1,0 +1,6 @@
+﻿namespace Application.Events.Queries.GetEvents
+{
+    public class EventViewModel
+    {
+    }
+}

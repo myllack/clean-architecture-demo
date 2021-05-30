@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Clean_architecture_demo
+namespace Api
 {
     public class Program
     {
