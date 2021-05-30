@@ -6,7 +6,7 @@ namespace Infrastructure.Persistence
 {
     public class InMemoryEventStore
     {
-        private static List<Event> _events = new List<Event>();
+        private static readonly List<Event> _events = new();
 
         public int AddEvent(Event newEvent)
         {
