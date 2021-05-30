@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
-    public class EventsController : ControllerBase
+    public class EventsController : ApiControllerBase
     {
         private readonly ILogger<EventsController> _logger;
 
@@ -17,9 +18,10 @@ namespace Api.Controllers
         }
 
         [HttpGet("list")]
-        public IEnumerable<EventViewModel> Get()
+        public async Task<List<EventViewModel>> Get(CancellationToken cancellationToken)
         {
-            return null;
+            var query = new GetEventsQuery();
+            return await Mediator.Send(query, cancellationToken);
         }
     }
 }

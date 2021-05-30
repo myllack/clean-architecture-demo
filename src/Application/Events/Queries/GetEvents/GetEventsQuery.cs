@@ -1,6 +1,9 @@
-﻿namespace Application.Events.Queries.GetEvents
+﻿using MediatR;
+using System.Collections.Generic;
+
+namespace Application.Events.Queries.GetEvents
 {
-    public class GetEventsQuery
+    public class GetEventsQuery : IRequest<List<EventViewModel>>
     {
     }
 }
