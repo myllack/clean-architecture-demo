@@ -1,13 +1,21 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Persistence
 {
     public class EventCommands : IEventCommands
     {
-        public int CreateEvent(Event @event)
+        private readonly InMemoryEventStore _eventStore;
+
+        public EventCommands(InMemoryEventStore eventStore)
         {
-            throw new System.NotImplementedException();
+            _eventStore = eventStore;
+        }
+
+        public async Task<int> CreateEvent(Event newEvent)
+        {
+            return _eventStore.AddEvent(newEvent);
         }
     }
 }

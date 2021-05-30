@@ -1,9 +1,10 @@
 ﻿using Domain.Entities;
+using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
     public interface IEventCommands
     {
-        public int CreateEvent(Event @event);
+        public Task<int> CreateEvent(Event @event);
     }
 }

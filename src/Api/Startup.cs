@@ -46,6 +46,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetAssembly(typeof(Application.Events.Queries.GetEvents.GetEventsQuery)));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(Application.Events.Queries.GetEvents.GetEventsQuery)));
 
             services.AddHttpContextAccessor();
 
@@ -57,6 +58,8 @@ namespace Api
 
             services.AddScoped<IEventQueries, EventQueries>();
             services.AddScoped<IEventCommands, EventCommands>();
+
+            services.AddSingleton<InMemoryEventStore>();
         }
     }
 }

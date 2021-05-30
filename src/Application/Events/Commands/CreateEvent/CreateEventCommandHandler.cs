@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +15,15 @@ namespace Application.Events.Commands.CreateEvent
             _eventCommands = eventCommands;
         }
 
-        public Task<int> Handle(CreateEventCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateEventCommand request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var newEvent = new Event
+            {
+                Name = request.Name,
+                Dates = request.Dates
+            };
+
+            return await _eventCommands.CreateEvent(newEvent);
         }
     }
 }
